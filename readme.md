@@ -32,7 +32,7 @@
                 </p>
                 <img src="./md/image_pasta.png"/>
                 <p>Em seguida abra o git bash e digite o código a seguir:</p>
-                <pre><code>git clone link</code></pre>
+                <pre><code>git clone https://github.com/edgargavioli/dockerwordpress</code></pre>
             </li>
             <li>
                 Com o projeto clonado em sua máquina, acesse a pasta do projeto:
@@ -50,10 +50,10 @@
             </li>
             <li>
                 Em seguida executaremos o comando:
-                <pre><code>docker stack deploy -c arquivo.yml nome_stack</code></pre>
+                <pre><code>docker stack deploy -c docker-compose.yml "nome_stack"</code></pre>
                 com este comando vamos iniciar nossos services que estão no arquivo .yml sendo eles:
                 <ul>
-                    <li>mysql:5.7 - database</li>
+                    <li>mysql - database</li>
                     <li>mysql-exporter - exporta os dados do mysql para serem acessados pelo prometheus</li>
                     <li>redis - usado para armazenar em cache as querys feitas pelo wordpress</li>
                     <li>wordpress - nosso site</li>
