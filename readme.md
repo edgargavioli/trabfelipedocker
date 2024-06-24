@@ -100,17 +100,17 @@ Passo 6: Acessar o Prometheus
 
 * Verifique as métricas dos containers e do mysql.
 * Métricas do container:
-  `
+  ```
   container_cpu_system_seconds_total
   container_fs_reads_total
   container_fs_limit_bytes
-  `
+  ```
 * Métricas do MySQL:
-  `
+  ```
   mysql_exporter_collector_success
   mysql_global_status_connections
   mysql_global_status_max_used_connections
-  `
+  ```
 
 Passo 7: Dashboard do Grafana
 -------------------------
