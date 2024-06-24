@@ -73,7 +73,7 @@ Passo 5: Corrigir erro de conexão entre o Redis e o Docker
 
 * Execute o comando: `docker ps` para listar todos os containers em execução.
 * Copie o CONTAINER ID do container que está instanciando o WordPress.
-* Execute o comando: `docker exec -it "<ID DO SEU CONTAINER>" bash` para acessar a máquina que está executando o WordPress.
+* Execute o comando: `docker exec -it "<ID DO SEU CONTAINER>" bash` para acessar a máquina que está executando o WordPress (Tire as aspas e o simbolo de maior menor ("" e <>) da parte de ID DO SEU CONTAINER para que não haja nenhum erro).
 
 ### 5.2 Edite o arquivo wp-config.php
 
