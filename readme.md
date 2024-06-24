@@ -79,7 +79,7 @@ Passo 5: Corrigir erro de conexão entre o Redis e o Docker
 
 * Execute o comando: `apt update` e `apt install nano` para atualizar o apt e instalar o nano.
 * Edite o arquivo `wp-config.php` com o comando: `nano wp-config.php`.
-* Adicione as linhas:
+* Adicione as linhas acima da linha que contenha o texto: `/* That's all, stop editing! Happy publishing. */`:
     ```
     define('WP_CACHE', true); 
     define('WP_REDIS_HOST', 'edis'); 
@@ -97,6 +97,18 @@ Passo 6: Acessar o Prometheus
 ### 6.2 Verifique as métricas
 
 * Verifique as métricas dos containers e do mysql.
+* Métricas do container:
+  `
+  container_cpu_system_seconds_total
+  container_fs_reads_total
+  container_fs_limit_bytes
+  `
+* Métricas do MySQL:
+  `
+  mysql_exporter_collector_success
+  mysql_global_status_connections
+  mysql_global_status_max_used_connections
+  `
 
 Passo 7: Dashboard do Grafana
 -------------------------
@@ -111,7 +123,15 @@ Passo 7: Dashboard do Grafana
 
 ### 7.3 Crie um dashboard
 
-* Crie um dashboard e adicione uma visualização com a métrica do Prometheus.
+* Pela dashboard vamos em Connections e iremos acessar a opção "Data sources".
+* Nessa aba, vamos apertar o botão "Add new data source" e vamos buscar pelo Prometheus.
+* Para configurar o data source do prometheus vamos seleciona-lo na lista abrindo assim suas configurações. Em Connection vamos adicionar a url do servidor do prometheus sendo ela http://prometheus:9090.
+* Após adicionar sua url vamos no final da pagina e você ira apertar no botão "Save & test" assim podemos ir para a dashboards.
+* Na dashboards do grafana vamos apertar em "Create Dashboard" e em seguida "Add visualization".
+* No modal que apareceu vamos selecionar o Prometheus.
+* Na opção Query, vamos seleiconar a métrica do Prometheus e apertar em run query.
+* Assim será gerado um grafico e podemos apertar na opção "Apply" no canto superior direito
+* Dashboard do grafana gerado com sucesso!!!
 
 Passo 8: Cadvisor
 --------------
