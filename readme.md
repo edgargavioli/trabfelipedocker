@@ -28,7 +28,7 @@ Passo 2: Clonar e acessar repositório do projeto
 
 ### 2.2 Acesse a pasta do projeto
 
-* Com o projeto clonado em sua máquina, acesse a pasta do projeto: `cd projetodocker`
+* Com o projeto clonado em sua máquina, acesse a pasta do projeto: `cd trabfelipedocker`
 
 Passo 3: Executar o projeto
 -------------------------
