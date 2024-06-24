@@ -86,6 +86,8 @@ Passo 5: Corrigir erro de conexão entre o Redis e o Docker
     define('WP_REDIS_PORT', 6379);
     ```
 * Salve o arquivo com o comando: "CTRL+O" e feche o arquivo com o comando: "CTRL+X".
+* Volte para o painel de plugins do wordpress, atualize a pagina apertando "F5" e veja se o Redis apareça como Acessível.
+* Estando assim é só apertar no botão "Ativar o cache de objeto" e o Redis está configurado.
 
 Passo 6: Acessar o Prometheus
 -------------------------
