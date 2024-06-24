@@ -121,13 +121,12 @@ Passo 7: Dashboard do Grafana
 
 ### 7.2 Adicione o data source do Prometheus
 
-* Adicione o data source do Prometheus com a URL: `http://prometheus:9090`.
+* Pela dashboard vamos em Connections e iremos acessar a opção "Data sources".
+* Nessa aba, vamos apertar o botão "Add new data source" e vamos buscar pelo Prometheus.
+* Para configurar o data source do prometheus vamos seleciona-lo na lista abrindo assim suas configurações. Em Connection vamos adicionar a url do servidor do prometheus sendo ela `http://prometheus:9090`.
 
 ### 7.3 Crie um dashboard
 
-* Pela dashboard vamos em Connections e iremos acessar a opção "Data sources".
-* Nessa aba, vamos apertar o botão "Add new data source" e vamos buscar pelo Prometheus.
-* Para configurar o data source do prometheus vamos seleciona-lo na lista abrindo assim suas configurações. Em Connection vamos adicionar a url do servidor do prometheus sendo ela http://prometheus:9090.
 * Após adicionar sua url vamos no final da pagina e você ira apertar no botão "Save & test" assim podemos ir para a dashboards.
 * Na dashboards do grafana vamos apertar em "Create Dashboard" e em seguida "Add visualization".
 * No modal que apareceu vamos selecionar o Prometheus.
