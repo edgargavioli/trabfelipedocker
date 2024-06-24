@@ -28,9 +28,8 @@
         <ol>
             <li>
                 <p>
-                    Em qualquer pasta do seu computador, de preferencia uma pasta que não possua caracteres especiais como nome tipo a imagem a seguir:
+                    Em qualquer pasta do seu computador, de preferencia uma pasta que não possua caracteres especiais.
                 </p>
-                <img src="./md/image_pasta.png"/>
                 <p>Em seguida abra o git bash e digite o código a seguir:</p>
                 <pre><code>git clone https://github.com/edgargavioli/dockerwordpress</code></pre>
             </li>
@@ -99,7 +98,7 @@
         <ol>
             <li>
                 Para isso vamos entrar no nosso terminal e digitar o comando <code>sudo su</code> para trocarmos para o usuário root do sistema, faça login com sua senha de root, em seguida digite o comando <code>docker ps</code>:
-                Listamos todos os containers em execução, nessa lista vamos procurar o container que está instanciando o wordpress e copiarmos o CONTAINER ID dele ( no meu caso seu Id é: c18198e8c573 ).
+                Listamos todos os containers em execução, nessa lista vamos procurar o container que está instanciando o wordpress e copiarmos o CONTAINER ID dele.
             </li>
             <li>
                 Vamos executar o comando <code>docker exec -it "< ID DO SEU CONTAINER >" bash</code>, assim vamos acessar a maquiná que está executando o wordpress.
