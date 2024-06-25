@@ -36,7 +36,7 @@ Passo 1: Configurando o ambiente
 	sudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT
 	sudo iptables -A INPUT -p tcp --dport 8081 -j ACCEPT
 	sudo iptables-save | sudo tee /etc/iptables/rules.v4
-    	```
+	```
   *	Linux utilizando ufw:
 	```
 	sudo ufw enable
