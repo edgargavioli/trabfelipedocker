@@ -17,6 +17,101 @@ Passo 1: Configurando o ambiente
 	+ 9090: prometheus
 	+ 3000: grafana
 	+ 8081: cadvisor
+* Caso as portas não estejam liberadas para acesso você pode fazer uso dos comandos:
+* 	Windows utilizando o powershell (WSL):
+	```
+ 	New-NetFirewallRule -DisplayName "Allow WordPress" -Direction Inbound -LocalPort 8080 -Protocol TCP -Action Allow
+	New-NetFirewallRule -DisplayName "Allow MySQL" -Direction Inbound -LocalPort 3306 -Protocol TCP -Action Allow
+	New-NetFirewallRule -DisplayName "Allow Redis" -Direction Inbound -LocalPort 6379 -Protocol TCP -Action Allow
+	New-NetFirewallRule -DisplayName "Allow Prometheus" -Direction Inbound -LocalPort 9090 -Protocol TCP -Action Allow
+	New-NetFirewallRule -DisplayName "Allow Grafana" -Direction Inbound -LocalPort 3000 -Protocol TCP -Action Allow
+	New-NetFirewallRule -DisplayName "Allow cAdvisor" -Direction Inbound -LocalPort 8081 -Protocol TCP -Action Allow
+ 	```
+ *	Linux utilizando iptables:
+   	```
+	sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+	sudo iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+	sudo iptables -A INPUT -p tcp --dport 6379 -j ACCEPT
+	sudo iptables -A INPUT -p tcp --dport 9090 -j ACCEPT
+	sudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT
+	sudo iptables -A INPUT -p tcp --dport 8081 -j ACCEPT
+	sudo iptables-save | sudo tee /etc/iptables/rules.v4
+    	```
+  *	Linux utilizando ufw:
+	```
+	sudo ufw enable
+	sudo ufw allow 8080/tcp
+	sudo ufw allow 3306/tcp
+	sudo ufw allow 6379/tcp
+	sudo ufw allow 9090/tcp
+	sudo ufw allow 3000/tcp
+	sudo ufw allow 8081/tcp
+	sudo ufw reload
+  	```
+  *	MacOs:
+	## Passo 1: Criar um Arquivo de Configuração do `pf`
+	
+	Primeiro, crie um arquivo de configuração para o `pf` (Packet Filter).
+	
+	```
+	sudo nano /etc/pf.anchors/myrules
+	```
+	
+	## Passo 2: Adicionar Regras de Firewall ao Arquivo
+	
+	Adicione as seguintes regras de firewall ao arquivo criado:
+	
+	```
+	# Allow WordPress
+	pass in proto tcp from any to any port 8080
+	
+	# Allow MySQL
+	pass in proto tcp from any to any port 3306
+	
+	# Allow Redis
+	pass in proto tcp from any to any port 6379
+	
+	# Allow Prometheus
+	pass in proto tcp from any to any port 9090
+	
+	# Allow Grafana
+	pass in proto tcp from any to any port 3000
+	
+	# Allow cAdvisor
+	pass in proto tcp from any to any port 8081
+	```
+	
+	## Passo 3: Editar o Arquivo de Configuração Principal do `pf`
+	
+	Edite o arquivo de configuração principal do `pf` para incluir suas regras personalizadas.
+	
+	```
+	sudo nano /etc/pf.conf
+	```
+	
+	Adicione a linha abaixo ao arquivo `pf.conf` para incluir suas regras:
+	
+	```
+	anchor "myrules"
+	load anchor "myrules" from "/etc/pf.anchors/myrules"
+	```
+	
+	## Passo 4: Carregar e Aplicar as Novas Regras do `pf`
+	
+	Carregue e aplique as novas regras do `pf`.
+	
+	```
+	sudo pfctl -f /etc/pf.conf
+	sudo pfctl -e
+	```
+	
+	## Passo 5: Verificar se as Regras Foram Aplicadas Corretamente
+	
+	Verifique se as regras foram aplicadas corretamente.
+	
+	```
+	sudo pfctl -sr
+	```
 
 Passo 2: Clonar e acessar repositório do projeto
 ---------------------------------------------
@@ -24,7 +119,7 @@ Passo 2: Clonar e acessar repositório do projeto
 ### 2.1 Clone o repositório
 
 * Em qualquer pasta do seu computador, de preferência uma pasta que não possua caracteres especiais.
-* Abra o Git Bash e digite o comando: `git clone https://github.com/edgargavioli/dockerwordpress`
+* Abra o Git Bash e digite o comando: `git clone https://github.com/edgargavioli/trabfelipedocker`
 
 ### 2.2 Acesse a pasta do projeto
 
